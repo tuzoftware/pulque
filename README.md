@@ -1,6 +1,7 @@
 [![Pulque](ui/img/maguey.png)](http://www.tuzoftware.com/)
 
-Conjunto de Componentes ACL, twig natural templating engine, Modular basado en MVC y otros componentes para usar en PHP micro-framework
+Conjunto de Componentes ACL, twig natural templating engine, Modular basado en MVC y otros componentes para usar 
+en F3 Fat Free Framework PHP micro-framework.
 
 Instrucciones
 
