@@ -1,0 +1,48 @@
+<div class="container border-top">
+    <div class="row header-central-row">
+
+        <div class="col-lg-4 col-md-3 col-sm-3 col-xs-4">
+            Logo
+        </div>
+
+        <div class="col-lg-8 col-md-9 col-sm-9 col-xs-8 text-right">
+            <ul>
+                <!-- DROPDOWN - MY CART -->
+                [% if tieneAlgunPermiso(['ADMINISTRADOR','USUARIO']) %]
+                <li>
+                    <a href="[[base]]/test/home" class="dropdown-toggle" aria-haspopup="false" aria-expanded="false">
+                        <span class="dropdown-text hidden-xs">Test</span>
+                        <i class="fa fa-american-sign-language-interpreting fa-fw font-size-28" aria-hidden="true"></i><span class="margin-left-5 text-bold hidden-xs">Home</span>
+                    </a>
+                </li>
+                [% endif %]
+                <!-- /DROPDOWN - MY CART -->
+                <!-- DROPDOWN - MY CART -->
+                [% if tieneAlgunPermiso(['ADMINISTRADOR','USUARIO']) %]
+                <li>
+                    <a href="[[base]]/test/home" class="dropdown-toggle" aria-haspopup="false" aria-expanded="false">
+                        <span class="dropdown-text hidden-xs">Test 2</span>
+                        <i class="fa fa-american-sign-language-interpreting fa-fw font-size-28" aria-hidden="true"></i><span class="margin-left-5 text-bold hidden-xs">Home 2</span>
+                    </a>
+                </li>
+                [% endif %]
+
+
+                <!-- DROPDOWN - SIGNIN -->
+                [% if tieneAlgunPermiso(['ADMINISTRADOR','USUARIO']) %]
+                <li>
+                    <a href="[[base]]/desloguear"  aria-haspopup="false" aria-expanded="false">
+
+                        <i class="fa fa-sign-out fa-fw font-size-28" aria-hidden="true"></i>
+                        <span class="text-bold hidden-xs">Salir</span>
+                    </a>
+                </li>
+                [% endif %]
+                <!-- /DROPDOWN - SIGNIN -->
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="titulo">
+    Pulque Framework
+</div>

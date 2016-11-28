@@ -1,0 +1,25 @@
+[% extends "base.html" %]
+[% block title %]  Contenido [% endblock %]
+[% block contenido %]
+<div>
+    [% if tieneAlgunPermiso(['ADMINISTRADOR']) %]
+    <p>
+        Este mensaje solo lo puede ver el administrador
+    </p>
+    [% endif %]
+    [% if tieneAlgunPermiso(['Usuario']) %]
+    <p>
+        Este mensaje solo lo puede ver el usuario
+    </p>
+    [% endif %]
+    [% if tieneAlgunPermiso(['ADMINISTRADOR','USUARIO']) %]
+    <p>
+        Este mensaje lo pueden ver los roles de usuario y administrador
+    </p>
+    [% endif %]
+    <h1>Lista de Usuarios</h1>
+    [% for usuario in usuarios %]
+          <li>[[ usuario.id_usuario ]]  [[ usuario.activo ]]</li>
+    [% endfor %]
+</div>
+[% endblock %]

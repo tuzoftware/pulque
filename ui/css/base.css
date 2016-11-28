@@ -1,0 +1,54 @@
+#titulo{
+    background-color:#186d31;
+    font-size:30px;
+    color:white;
+    padding-left: 20px;
+    padding-top:10px;
+    padding-bottom:10px;
+    font-family:Roboto;
+    font-weight: 700;
+}
+p.titulo {
+    color: #bbb;
+    font-size: 40px;
+    font-weight: 700;
+    margin-top: 20px;
+    font-family: Roboto;
+}
+.color-base{
+    color:#186d31 !important;
+}
+.modal-advertencia{
+    color:orange;
+    font-size:40px !important;
+}
+.modal-correcto {
+    color: green;
+    font-size: 40px !important;
+}
+.modal-mensaje{
+    display: table-cell;
+    vertical-align: middle;
+    padding-left:15px;
+    font-size: 18px;
+}
+.panel-red {
+    border-color: #d9534f;
+}
+.panel-red > .panel-heading {
+    background-color: #d9534f;
+    border-color: #d9534f;
+    color: #fff;
+}
+#consola{
+    display: none;
+}
+.subir{
+    background-color: #f5f5f5;
+    min-height:150px;
+    padding: 40px;
+}
+.subir-contenido{
+    margin: 2em 0;
+    text-align: center;
+}

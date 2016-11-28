@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head lang="es-MX" >
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Ingreso al SISTEMA</title>
+    <base href="[[base]]/" />
+    <link rel="stylesheet" href="[[base]]/ui/fonts/font-awesome-4.6.3/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="[[base]]/ui/js/base/bootstrap-3.3.1/css/bootstrap.min.css" />
+
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            min-height: 100%;
+            margin: 20px 0;
+            background-size: 100% 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Start: pArrow skin - Login -->
+    <form id="frmLogin" method="post"  action="#">
+        <div class="p-form p-bordered p-form-sm">
+            <div>Logo</div>
+            <!-- Start: title -->
+            <div class="p-title">
+                <span class="p-title-line">Pulque Login <i class="fa fa-sign-in"></i></span>
+            </div>
+            <!-- End: title -->
+            <div class="row">
+  
+                <div class="col-sm-6">
+                    <!-- Start: subtitle -->
+                    <div class="p-subtitle p-no-offs text-center">Identificate</div>
+                    <!-- End: subtitle -->
+                    <!-- Start: login <input:text> -->
+                    <div class="form-group">
+                        <label for="login" class="p-label-required">Id Usuario</label>
+                        <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <span class="p-addon-bg"><i class="fa fa-user"></i></span>
+                                    </span>
+                            <span class="p-field-wrap">
+                                        <span class="p-positioned">
+                                            <input type="text"  name="id" placeholder="Id Usuario" required="required" class="form-control" />
+                                            <span class="input-group-state">
+                                                <span class="p-position">
+                                                    <span class="p-text">
+                                                        <span class="p-required-text"><i class="fa fa-star"></i></span>
+                                                    </span>
+                                                </span>
+                                            </span>
+                                            <div class="p-arrow"></div>
+                                        </span>
+                                        <span class="p-field-cb"></span>
+                                    </span>
+                        </div>
+                    </div>
+                    <!-- End: login <input:text> -->
+                    <!-- Start: password <input:password> -->
+                    <div class="form-group">
+                        <label for="password" class="p-label-required">Contrase&ntilde;a</label>
+                        <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <span class="p-addon-bg"><i class="fa fa-lock"></i></span>
+                                    </span>
+                            <span class="p-field-wrap">
+                                        <span class="p-positioned">
+                                            <input type="password" id="password" name="password" placeholder="Contrase&ntilde;a" required="required" minlength="6" maxlength="10" class="form-control" />
+                                            <span class="input-group-state">
+                                                <span class="p-position">
+                                                    <span class="p-text">
+                                                        <span class="p-required-text"><i class="fa fa-star"></i></span>
+                                                    </span>
+                                                </span>
+                                            </span>
+                                            <div class="p-arrow"></div>
+                                        </span>
+                                        <span class="p-field-cb"></span>
+                                    </span>
+                        </div>
+                    </div>
+                    <!-- End: password <input:password> -->
+                    <div class="clearfix"></div>
+
+                </div>
+				              <div class="col-sm-6">
+                    <!-- Start: subtitle -->
+                    <div class="p-subtitle p-no-offs text-center"></div>
+                    <!-- End: subtitle -->
+                    <img class="base-logo"  src="[[base]]/ui/img/arte.png"  alt="logo" width="300">
+                </div>
+            </div>
+            <div class="text-left">
+			     <div class="col-sm-2">
+                    <button class="btn" type="submit" id="ingresar"><i class="fa fa-sign-in"></i>&nbsp;Ingresa</button>
+                </div>
+                <div class="col-sm-10">
+                    <div id="consola" class="alert alert-error" style="display:none"></div>
+                </div>
+           
+            </div>
+        </div>
+    </form>
+    <!-- End: pArrow skin - Login -->
+</div>
+
+
+<script src="[[base]]/ui/js/base/jquery/jquery-2.2.0.min.js"></script>
+<script src="[[base]]/ui/js/base/bootstrap-3.3.1/js/bootstrap.min.js"></script>
+<script>
+    $(function () {
+
+        $('#frmLogin').submit(function(event) {
+            $.post("loguear",$("#frmLogin").serialize() ,function( data ) {
+                if( data.tipoRespuesta == "MENSAJE" ) {
+                    $("#consola").html(data.mensaje).show();
+                }else{
+                    window.location.href = data.url;
+                }
+
+            });
+            event.preventDefault();
+        });
+
+
+
+    });//FIN READY
+</script>
+
+</body>
+</html>
