@@ -1,4 +1,7 @@
-var dataTableComponente = (function(selector,url,columnas,selectorFormulario="") {
+var dataTableComponente = (function(selector,url,columnas,selectorFormulario) {
+    if(selectorFormulario === undefined){
+    	selectorFormulario="";
+	}
     $.fn.dataTable.ext.errMode = 'throw';
 	//.on( 'error.dt', function ( e, settings, techNote, message ) {
     //         console.log( 'Ocurrio un error: ', message );
@@ -91,8 +94,9 @@ return true;
 		dt.draw();
 	}
 
-	function obtenerSeleccionado(renglon) {
-		var row = instancia.row(renglon); 
+	function obtenerSeleccionado(elemento) {
+		var renglon=$(elemento).closest("tr");
+		var row = dt.row(renglon);
 		return row.data();
 	}
 	
