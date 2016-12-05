@@ -92,7 +92,7 @@ $whoops->pushHandler(function ($exception) {
     $datosAdicionales=array("codigo"=>500,"folio"=>$errorInesperado,"mensaje"=>$mensaje);
     $logger->write($mensaje);
     if(\Whoops\Util\Misc::isAjaxRequest()){
-        http_response_code(500);
+        //http_response_code(500);
         MensajeRespuesta::mensajeDatosAdicionales($errorInesperado,$datosAdicionales,'ERROR',500);
     }else{
 	    F3::error("500",$errorInesperado."|".$mensaje);

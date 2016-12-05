@@ -23,8 +23,13 @@ var baseComponente = (function() {
 
                jqXHR.complete(function(request) { 
                if(request!=undefined && request.responseJSON!=undefined){
-				   				   if(request.responseJSON.estatus==408 || request.responseJSON.estatus==404 ||request.responseJSON.estatus==500 ){
-					 window.location.href = request.responseJSON.url;
+				   if(request.responseJSON.estatus==408 || request.responseJSON.estatus==404 ||request.responseJSON.estatus==500 ){
+					if(request.responseJSON.url===undefined){
+                        redireccionar(base+"/error",request.responseJSON.datosAdicionales);
+					}else{
+                        window.location.href = request.responseJSON.url;
+					}
+
 				   }
 				   if(request.responseJSON.estatus==200 && request.responseJSON.tipoRespuesta=="MENSAJES" 
 				   && request.responseJSON.tipoMensaje=="ERROR"){
