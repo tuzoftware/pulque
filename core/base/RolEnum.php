@@ -12,5 +12,9 @@ class RolEnum
 
     const USUARIO="USUARIO";
 
+    public static function getConstants() {
+        $clase = new ReflectionClass(__CLASS__);
+        return $clase->getConstants();
+    }
 
 }
