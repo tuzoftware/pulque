@@ -15,4 +15,4 @@ Version minima de php 5.4
 
 Usuario para entrar admin contrasenia password
 
-Version 1.5
+Version 1.6

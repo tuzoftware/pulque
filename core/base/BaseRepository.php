@@ -83,6 +83,11 @@ class BaseRepository
         return $objeto;
     }
 
+    public function guardar($arreglo,$nombre_tabla){
+        $objeto=$this->convertirArregloModelo($nombre_tabla,$arreglo);
+        $objeto->save();
+    }
+
     public function guardarActualizar($arreglo,$nombre_tabla,$id){
         $objeto=null;
         if(empty($arreglo[$id])){
