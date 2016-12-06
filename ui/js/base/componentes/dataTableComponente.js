@@ -99,12 +99,16 @@ return true;
 		var row = dt.row(renglon);
 		return row.data();
 	}
-	
+
+    function recargar(){
+        dt.draw();
+    }
 	
 	//Inicio Return
 	return {
 		buscar:buscar,
-		obtenerSeleccionado : obtenerSeleccionado
+		obtenerSeleccionado : obtenerSeleccionado,
+		recargar: recargar
 	};
 
 	//Fin Return
