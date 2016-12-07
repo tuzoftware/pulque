@@ -83,9 +83,16 @@ class BaseRepository
         return $objeto;
     }
 
-    public function guardar($arreglo,$nombre_tabla){
+    public function guardar(&$arreglo,$nombre_tabla){
         $objeto=$this->convertirArregloModelo($nombre_tabla,$arreglo);
         $objeto->save();
+        $arreglo=$objeto;
+    }
+
+    public function actualizar(&$arreglo,$nombre_tabla,$id){
+        $objeto=$this->copiarPropiedades($arreglo,$nombre_tabla,$id);
+        $objeto->update();
+        $arreglo=$objeto;
     }
 
     public function guardarActualizar($arreglo,$nombre_tabla,$id){
