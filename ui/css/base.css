@@ -52,3 +52,7 @@ p.titulo {
     margin: 2em 0;
     text-align: center;
 }
+.dropzone-modal{
+    background: none !important;
+    border: none !important;
+}

@@ -6,19 +6,22 @@ RewriteEngine On
 # containing this .htaccess file
 #
 # RewriteBase /
-
-RewriteRule ^(tmp)\/|\.ini$ - [R=404]
+#RewriteRule (.php) [R=404]
+#RewriteRule ^app/.*\.(php)$ - [F,L,NC]
+RewriteRule ^app/.*\.(php)$ - [R=404]
+RewriteRule ^core/.*\.(php)$ - [R=404]
+RewriteRule ^(tmp)\/|\.ini|\.html$ - [R=404]
 
 RewriteCond %{REQUEST_FILENAME} !-l
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule .* index.php [L,QSA]
 RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization},L]
-## Evitar que se liste el contenido de los directorios  
-Options All -Indexes  
-   
-## Lo mismo que lo anterior  
-IndexIgnore *  
-   
-# Protegerse contra los ataques DOS limitando el tamaño de subida de archivos  
+## Evitar que se liste el contenido de los directorios
+Options All -Indexes
+
+## Lo mismo que lo anterior
+IndexIgnore *
+
+# Protegerse contra los ataques DOS limitando el tamaño de subida de archivos
 LimitRequestBody 10240000
