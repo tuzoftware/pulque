@@ -56,3 +56,6 @@ p.titulo {
     background: none !important;
     border: none !important;
 }
+.select2-container--bootstrap{
+    width: 100% !important;
+}
