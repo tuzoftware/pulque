@@ -3,7 +3,7 @@
 /**
  * Created by PhpStorm.
  * User: ULTRABOOK
- * Date: 07/11/2015
+ * Date: 07/12/2016
  * Time: 01:24 PM
  */
 class BaseRepository
@@ -31,6 +31,16 @@ class BaseRepository
         $objeto=new DB\SQL\Mapper($this->db,$nombre_tabla);
         $objeto->load(array($id.'=?',$valor));
         return $objeto;
+    }
+
+    public function existeId($nombre_tabla,$id,$valor){
+        $objeto=new DB\SQL\Mapper($this->db,$nombre_tabla);
+        $objeto->load(array($id.'=?',$valor));
+        $existe=false;
+        if(!empty($objeto[$id])){
+            $existe=true;
+        }
+        return $existe;
     }
 
     protected function actualizacion(){
