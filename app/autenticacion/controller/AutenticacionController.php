@@ -54,10 +54,10 @@ class AutenticacionController extends BaseController{
   private function cargarConfiguracionSesion($usuario){
       $datos=null;
 	  SesionAuxiliar::subir('id_usuario', $usuario->id_usuario);
-	  $permisos=F3::get('DB')->exec("SELECT rol.id_rol FROM USUARIO
-        JOIN USUARIO_ROL ON usuario_rol.id_usuario=usuario.id_usuario 
-        JOIN ROL ON rol.id_rol = usuario_rol.id_rol
-        WHERE USUARIO.id_usuario=:id_usuario",array(':id_usuario'=>$usuario->id_usuario));
+	  $permisos=F3::get('DB')->exec("SELECT rol.id_rol FROM usuario
+        JOIN usuario_rol ON usuario_rol.id_usuario=usuario.id_usuario 
+        JOIN rol ON rol.id_rol = usuario_rol.id_rol
+        WHERE usuario.id_usuario=:id_usuario",array(':id_usuario'=>$usuario->id_usuario));
       if(empty($permisos)){
           MensajeRespuesta::mensaje('No tiene ningun permiso Asignado','ERROR');
       }

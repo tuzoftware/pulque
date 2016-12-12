@@ -1,15 +1,8 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: tuz0ftware
- * Date: 10/10/2016
- * Time: 05:14 PM
- */
 class FechaUtil{
 
-    static function validarFecha($date, $format = 'd/m/Y')
-    {
+    public static function validarFecha($date, $format = 'd/m/Y'){
         $d = DateTime::createFromFormat($format, $date);
         return $d && $d->format($format) == $date;
     }
@@ -20,8 +13,9 @@ class FechaUtil{
      * @param string $format
      * @return false|string
      */
-    static function convertirFecha($fecha, $format='Y-m-d'){
-        return date($format,strtotime($fecha));
+    public static function convertirFecha($fecha, $formatoOrigen = "d/m/Y", $formatoDestino = 'Y-m-d'){
+        $fecha = DateTime::createFromFormat($formatoOrigen, $fecha);
+        return $fecha->format($formatoDestino);
     }
 
 }
