@@ -81,13 +81,31 @@ var dataTableComponente = (function (selector, url, columnas, selectorFormulario
     function recargar() {
         dt.draw();
     }
+    
+    function detalle(html) {
+        $(selector+' tbody').on('click', 'td.details-control', function () {
+            var tr = $(this).closest('tr');
+            var row = dt.row(tr);
+            if ( row.child.isShown() ) {
+                // This row is already open - close it
+                row.child.hide();
+                tr.removeClass('shown');
+            }
+            else {
+                // Open this row
+                row.child(format(html).show());
+                tr.addClass('shown');
+            }
+        } );
+    }
 
 
     //Inicio Return
     return {
         buscar: buscar,
         obtenerSeleccionado: obtenerSeleccionado,
-        recargar: recargar
+        recargar: recargar,
+        detalle:detalle
     };
 
     //Fin Return
