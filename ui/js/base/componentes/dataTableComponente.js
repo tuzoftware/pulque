@@ -83,7 +83,7 @@ var dataTableComponente = (function (selector, url, columnas, selectorFormulario
     }
     
     function detalle(html) {
-        $(selector+' tbody').on('click', 'td.details-control', function () {
+        $(selector+' tbody').on('click', 'td', function () {
             var tr = $(this).closest('tr');
             var row = dt.row(tr);
             if ( row.child.isShown() ) {
