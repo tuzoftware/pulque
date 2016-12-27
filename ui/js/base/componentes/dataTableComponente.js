@@ -30,7 +30,7 @@ var dataTableComponente = (function (selector, url, columnas, selectorFormulario
         },
         "preDrawCallback": function (settings) {
             if (settings.json !== undefined && settings.json.tipoRespuesta != "DATOS" && tieneError) {
-                    return false;
+                return false;
             }
         },
         "fnServerData": function (sSource, aoData, fnCallback, oSettings) {
@@ -81,20 +81,20 @@ var dataTableComponente = (function (selector, url, columnas, selectorFormulario
     function recargar() {
         dt.draw();
     }
-    
+
     function detalle(html) {
-        $(selector+' tbody').on('click', 'td', function () {
+        $(selector+' tbody').on('click', '.odd,.even', function () {
             var tr = $(this).closest('tr');
             var row = dt.row(tr);
             if ( row.child.isShown() ) {
                 // This row is already open - close it
                 row.child.hide();
-                tr.removeClass('shown');
+                tr.removeClass('dt-renglon-activo');
             }
             else {
                 // Open this row
-                row.child(format(html).show());
-                tr.addClass('shown');
+                row.child(html).show();
+                tr.addClass('dt-renglon-activo');
             }
         } );
     }

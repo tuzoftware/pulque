@@ -363,3 +363,8 @@ thead th {
 thead {
     background: #186d31 none repeat scroll 0 0;
 }
+
+.dt-renglon-activo td{
+  background-color:royalblue !important;
+  color: #fff !important;
+}
