@@ -82,7 +82,8 @@ var dataTableComponente = (function (selector, url, columnas, selectorFormulario
         dt.draw();
     }
 
-    function detalle(html) {
+    function detalle(selectorPlantilla) {
+
         $(selector+' tbody').on('click', '.odd,.even', function () {
             var tr = $(this).closest('tr');
             var row = dt.row(tr);
@@ -92,8 +93,10 @@ var dataTableComponente = (function (selector, url, columnas, selectorFormulario
                 tr.removeClass('dt-renglon-activo');
             }
             else {
+                var renglon = obtenerSeleccionado(this);
+                var htmlDetalle=handleBarsComponente.compilar(selectorPlantilla,renglon);
                 // Open this row
-                row.child(html).show();
+                row.child(htmlDetalle).show();
                 tr.addClass('dt-renglon-activo');
             }
         } );
