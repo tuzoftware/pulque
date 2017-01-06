@@ -59,13 +59,13 @@ var baseComponente = (function() {
             });
         });
     }
-    function redireccionar(location, args)
+    function redireccionar(url, args)
     {
         var form = '';
         $.each( args, function( key, value ) {
             form += '<input type="hidden" name="'+key+'" value="'+value+'">';
         });
-        form='<form action="'+location+'" method="POST">'+form+'</form>';
+        form='<form action="'+url+'" method="POST">'+form+'</form>';
         $(form).appendTo('body').submit();
     }
     function tieneError(data){
@@ -133,6 +133,7 @@ var baseComponente = (function() {
         mostrarMensaje:mostrarMensaje,
         mostrarMensajes:mostrarMensajes,
         agregarPropiedad:agregarPropiedad,
-        redireccionarError:redireccionarError
+        redireccionarError:redireccionarError,
+        redireccionar:redireccionar
     };
 })();
