@@ -124,7 +124,6 @@ var baseComponente = (function() {
     function redireccionarError(base,data){
         redireccionar(base+"/error",data.datosAdicionales);
     }
-
     // public API
     return {
         inicializarAjax:inicializarAjax,
