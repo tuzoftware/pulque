@@ -33,6 +33,17 @@ class BaseRepository
         return $objeto;
     }
 
+    public function existeValor($nombreTabla, $nombreIdForanea,$valorForanea, $nombreCampo, $valor){
+        $tabla=new DB\SQL\Mapper($this->db,$nombreTabla);
+        $filtro=array("$nombreIdForanea=? AND $nombreCampo=?",$valorForanea,$valor);
+        $tabla->load($filtro);
+        if(empty($tabla[$nombreIdForanea])){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
     public function existeId($nombre_tabla,$id,$valor){
         $objeto=new DB\SQL\Mapper($this->db,$nombre_tabla);
         $objeto->load(array($id.'=?',$valor));
