@@ -124,6 +124,10 @@ var baseComponente = (function() {
     function redireccionarError(base,data){
         redireccionar(base+"/error",data.datosAdicionales);
     }
+
+    function limpiarFormulario(selector){
+        $(selector).trigger("reset");
+    }
     // public API
     return {
         inicializarAjax:inicializarAjax,
@@ -133,6 +137,7 @@ var baseComponente = (function() {
         mostrarMensajes:mostrarMensajes,
         agregarPropiedad:agregarPropiedad,
         redireccionarError:redireccionarError,
-        redireccionar:redireccionar
+        redireccionar:redireccionar,
+        limpiarFormulario:limpiarFormulario
     };
 })();
