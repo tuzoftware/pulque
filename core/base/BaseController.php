@@ -17,6 +17,14 @@ class BaseController
          echo $this->twig->render($vistahtml,$this->parametros);
          exit;
      }
+
+      public function post($parametro){
+        return F3::GET("POST.".$parametro);
+      }
+
+      public function get($parametro){
+        return F3::GET("GET.".$parametro);
+      }
    
 
     public function afterRoute(){
