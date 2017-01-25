@@ -9,7 +9,15 @@ var baseComponente = (function() {
         }
         $.ajaxPrefilter(function(options, _, jqXHR) {
             jqXHR.statusCode( {
-
+                404: function() {
+                    if(jqXHR.responseJSON!=undefined){
+                        redireccionar(base+"/error",jqXHR.responseJSON.datosAdicionales);
+                    }else{
+                        var newDoc = document.open("text/html", "replace");
+                        newDoc.write(jqXHR.responseText);
+                        newDoc.close();
+                    }
+                },
                 408: function() {
                     if(jqXHR.responseJSON!=undefined){
                         redireccionar(base+"/error",jqXHR.responseJSON.datosAdicionales);
