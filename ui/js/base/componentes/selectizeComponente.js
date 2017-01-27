@@ -1,4 +1,4 @@
-//0.4
+//0.5
 //Funciona con grids del lado del cliente
 //para muchos grids instanciarlo como se muestra abajo;
 //var selectize=selectizeComponente("#id1");
@@ -17,6 +17,14 @@ var selectizeComponente = (function(selector) {
 
     function limpiar(){
         instancia.setValue("");
+    }
+
+    function disable(){
+        instancia.disable();
+    }
+
+    function enable() {
+        instancia.enable();
     }
 
     function instanciar(){
@@ -49,7 +57,9 @@ var selectizeComponente = (function(selector) {
         limpiar: limpiar,
         setValue:setValue,
         instanciar:instanciar,
-        encadenar:encadenar
+        encadenar:encadenar,
+        enable:enable,
+        disable:disable
         //:cargar
     };
     //Fin Return
