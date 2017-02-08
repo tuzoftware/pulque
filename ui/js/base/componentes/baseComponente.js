@@ -54,13 +54,30 @@ var baseComponente = (function() {
                     if(request.responseJSON.estatus==200 && request.responseJSON.tipoRespuesta=="MENSAJES"
                         && request.responseJSON.tipoMensaje=="ERROR"){
                         ocultarErrores();
+                        var selector="";
+
                         $.each(request.responseJSON.mensajes, function( index, value ) {
-                            if(mostrarPrimerError){
-                                $("#error-"+index+" i ").html("    "+value[0]);
+                            var selector="[data-error='"+index+"']";
+                            var selectorI="[data-error='"+index+"'] i";
+                            var elemento="";
+                            var elementoI="";
+                            console.log(options.elemento);
+                            if(options.elemento!=undefined){
+                                elemento=$(options.elemento).find(selector);
+                                elementoI=$(options.elemento).find(selectorI);
                             }else{
-                                $("#error-"+index+" i ").html("    "+value);
+                                elemento=selector;
+                                elementoI=selectorI;
                             }
-                            $("#error-"+index).show();
+                            console.log(elementoI);
+                            if(mostrarPrimerError){
+                                var texto="   "+value[0];
+                                $(elementoI).html(texto);
+                            }else{
+                                var texto=value;
+                                $(elementoI).html(texto);
+                            }
+                            $(elemento).show();
                         });
                     }
                 }
@@ -136,6 +153,8 @@ var baseComponente = (function() {
     function limpiarFormulario(selector){
         $(selector).trigger("reset");
     }
+
+
     // public API
     return {
         inicializarAjax:inicializarAjax,
