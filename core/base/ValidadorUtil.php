@@ -46,7 +46,7 @@ class ValidadorUtil{
         $this->validador->rule('between', $campo, array($valorMinimo, $valorMaximo));
     }
 
-    public function validarNumeroIdForaneo($campo,$requerido,$valorMinimo=1){
+    public function validarNumeroId($campo,$requerido,$valorMinimo=1){
         $this->validarRequerido($campo,$requerido);
         $this->validador->rule("numeric",$campo);
         $this->validador->rule('min', $campo,$valorMinimo);
@@ -69,6 +69,18 @@ class ValidadorUtil{
             })->message("El campo $label es requerido");
             $this->validador->rule('arregloRequerido',$this->arreglo);
         }
+    }
+
+    public function validate(){
+        return $this->validador->validate();
+    }
+
+    public function getErrors(){
+        return $this->validador->errors();
+    }
+
+    public function agregarEtiquetas($etiquetas){
+        $this->validador->labels($etiquetas);
     }
 
 }
