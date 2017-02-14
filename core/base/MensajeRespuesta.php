@@ -7,8 +7,7 @@ class MensajeRespuesta{
    $data['estatus'] = $estatus;
    $data['mensaje']=$mensaje;  
    $data['tipoRespuesta']='MENSAJE';  
-   $data['tipoMensaje']=$tipoMensaje;  
-
+   $data['tipoMensaje']=$tipoMensaje;
    echo json_encode($data);
    header('Content-type: application/json');
    exit();
@@ -34,9 +33,33 @@ class MensajeRespuesta{
    echo json_encode($data);
    header('Content-type: application/json');
    exit();
-  } 
+  }
 
-  static function datosJSON($draw,$total,$data=array()){
+    static function mensajesErrores($mensajes,$estatus=200){
+        $data = array();
+        $data['estatus'] = $estatus;
+        $data['mensajes']=$mensajes;
+        $data['tipoRespuesta']='MENSAJES';
+        $data['tipoMensaje']="ERROR";
+        echo json_encode($data);
+        header('Content-type: application/json');
+        exit();
+    }
+
+  static function mensajeError($mensajeError,$tipoMensaje="CORRECTO",$estatus=200){
+        $data = array();
+        $data['estatus'] = $estatus;
+        $mensajes=array();
+        $mensajes["generico"][]=$mensajeError;
+        $data['mensajes']=$mensajes;
+        $data['tipoRespuesta']='MENSAJES';
+        $data['tipoMensaje']=$tipoMensaje;
+        echo json_encode($data);
+        header('Content-type: application/json');
+        exit();
+  }
+
+    static function datosJSON($draw,$total,$data=array()){
     $json_data = [
           "draw"            => intval($draw),
           "recordsTotal"    => intval( $total ),
