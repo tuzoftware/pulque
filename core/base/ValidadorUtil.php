@@ -71,6 +71,20 @@ class ValidadorUtil{
         }
     }
 
+    public function validarEnumKey($campo,$clase){
+        if(!EnumUtil::buscarKey($clase,$this->arreglo[$campo])){
+            $mensajes=array($campo=>"Valor no valido");
+            MensajeRespuesta::mensajesErrores($mensajes);
+        }
+    }
+
+    public function validarEnumValue($campo,$clase){
+        if(!EnumUtil::buscarValue($clase,$this->arreglo[$campo])){
+            $mensajes=array($campo=>"Valor no valido");
+            MensajeRespuesta::mensajesErrores($mensajes);
+        }
+    }
+
     public function validate(){
         return $this->validador->validate();
     }
