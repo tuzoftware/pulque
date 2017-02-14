@@ -80,7 +80,7 @@ class ValidadorUtil{
 
     public function validarEnumValue($campo,$clase){
         if(!EnumUtil::buscarValue($clase,$this->arreglo[$campo])){
-            $mensajes=array($campo=>"Valor no valido");
+            $mensajes=array($campo=>array("Valor no valido"));
             MensajeRespuesta::mensajesErrores($mensajes);
         }
     }
