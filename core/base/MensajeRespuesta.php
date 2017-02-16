@@ -46,18 +46,16 @@ class MensajeRespuesta{
         exit();
     }
 
-  static function mensajeError($mensajeError,$estatus=200){
+    static function mensajeError($mensaje,$estatus=200){
         $data = array();
         $data['estatus'] = $estatus;
-        $mensajes=array();
-        $mensajes["generico"][]=$mensajeError;
-        $data['mensajes']=$mensajes;
-        $data['tipoRespuesta']='MENSAJES';
-        $data['tipoMensaje']="ERROR";
+        $data['mensaje']=$mensaje;
+        $data['tipoRespuesta']='MENSAJE';
+        $data['tipoMensaje']='ERROR';
         echo json_encode($data);
         header('Content-type: application/json');
         exit();
-  }
+    }
 
     static function datosJSON($draw,$total,$data=array()){
     $json_data = [
