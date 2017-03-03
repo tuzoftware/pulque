@@ -117,8 +117,13 @@ if(F3::get('SESSION.id_usuario') == false) {
     $f3->route('GET /','AutenticacionController->index');
 }else {
     if (F3::get('SESSION.tiempo') + F3::get('TIEMPO') > time()) { //Infraestructura
+
+        //RUTAS DE TEST
         Accesso::permitir('GET /', 'TestController->index', array(RolEnum::ADMINISTRADOR,RolEnum::USUARIO));
         Accesso::permitir('GET /test/home', 'TestController->index', array(RolEnum::ADMINISTRADOR,RolEnum::USUARIO));
+        Accesso::permitir('POST /test/buscar','TestController->buscar', array(RolEnum::ADMINISTRADOR,RolEnum::USUARIO));
+
+
     } else {
         $autenticacionController = new AutenticacionController();
         $autenticacionController->desloguearTiempoExpirado();

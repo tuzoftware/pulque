@@ -1,5 +1,9 @@
 [% extends "base.html" %]
 [% block title %]  Contenido [% endblock %]
+   [% block head %] [[ parent() ]]
+   <link href="[[base]]/ui/js/base/datatables-1.10.12/css/dataTables-custom.css" rel="stylesheet" type="text/css">
+   <link href="[[base]]/ui/js/base/selectize/css/selectize.bootstrap3.css" rel="stylesheet" type="text/css">
+   [% endblock %]
 [% block contenido %]
 <div>
     [% if tieneAlgunPermiso(['ADMINISTRADOR']) %]
@@ -22,4 +26,33 @@
           <li>[[ usuario.id_usuario ]]  [[ usuario.activo ]]</li>
     [% endfor %]
 </div>
+<table id="tablaContinente">
+    <tr>
+        <td>Id</td>
+        <td>Pais</td>
+    </tr>
+</table>
+[% endblock %]
+[% block scripts %]
+[[ parent() ]]
+<script src="[[base]]/ui/js/base/selectize/js/selectize.min.js"></script>
+<script src="[[base]]/ui/js/base/datatables-1.10.12/js/datatables.min.js"></script>
+<script src="[[base]]/ui/js/base/componentes/dataTableComponente.js"></script>
+<script src="[[base]]/ui/js/base/componentes/selectizeComponente.js"></script>
+<script type="text/javascript">
+    $(function(){
+        //Se definen las columnas del GRID
+
+        var columnas= [{
+            "data":"id_test_continente",
+            "defaultContent" : ""
+        },{
+            "data":"pais",
+            "defaultContent" : ""
+        }];
+
+        var dt= dataTableComponente("#tablaContinente","[[base]]/test/buscar",columnas);
+
+    });
+</script>
 [% endblock %]
