@@ -25,6 +25,10 @@ class BaseController
       public function get($parametro){
         return F3::GET("GET.".$parametro);
       }
+
+      public function base(){
+          return F3::get('BASE');
+      }
    
 
     public function afterRoute(){

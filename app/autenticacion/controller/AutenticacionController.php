@@ -122,7 +122,7 @@ class AutenticacionController extends BaseController{
 			if(F3::get('AJAX')){
 				
 			}else{
-		      F3::reroute("/");
+		      F3::reroute($this->base());
               exit;
 			}
         }
