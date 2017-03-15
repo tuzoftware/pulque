@@ -122,7 +122,7 @@ if(F3::get('SESSION.id_usuario') == false) {
         Accesso::permitir('GET /', 'TestController->index', array(RolEnum::ADMINISTRADOR,RolEnum::USUARIO));
         Accesso::permitir('GET /test/home', 'TestController->index', array(RolEnum::ADMINISTRADOR,RolEnum::USUARIO));
         Accesso::permitir('POST /test/buscar','TestController->buscar', array(RolEnum::ADMINISTRADOR,RolEnum::USUARIO));
-
+        //FIN RUTAS TEST
 
     } else {
         $autenticacionController = new AutenticacionController();
