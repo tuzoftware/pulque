@@ -19,8 +19,8 @@ Usuario para entrar admin contrasenia password
 
 - [ ] Eliminar la carpeta test que se encuentra en la ruta de app/test
 - [ ] Eliminar la clase TestRepository que se encuentra en la ruta/app/repository
-- [ ]Eliminar ls carpeta test que se encuentra dentro ui/modulos
-- [ ]Eliminar las rutas de test que se encuentran en el index.php
+- [ ] Eliminar ls carpeta test que se encuentra dentro ui/modulos
+- [ ] Eliminar las rutas de test que se encuentran en el index.php
 - [ ] Método redireccionar Rol en AutenticacionController
 
 Version 1.43
