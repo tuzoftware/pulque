@@ -3,7 +3,7 @@
 Conjunto de Componentes ACL, twig natural templating engine, Modular basado en MVC y otros componentes para usar 
 en F3 Fat Free Framework PHP micro-framework.
 
-Instrucciones
+# Instrucciones
 
 Crear una base de datos llamada pulque
 
@@ -15,4 +15,12 @@ Version minima de php 5.4
 
 Usuario para entrar admin contrasenia password
 
-Version 1.41
+# Pasos para Eliminar los test
+
+- [ ] Eliminar la carpeta test que se encuentra en la ruta de app/test
+- [ ] Eliminar la clase TestRepository que se encuentra en la ruta/app/repository
+- [ ]Eliminar ls carpeta test que se encuentra dentro ui/modulos
+- [ ]Eliminar las rutas de test que se encuentran en el index.php
+- [ ] Método redireccionar Rol en AutenticacionController
+
+Version 1.43
