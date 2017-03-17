@@ -17,6 +17,10 @@ Usuario para entrar admin contrasenia password
 
 # Pasos para Eliminar los test
 
+El framework tiene un modulo de test para mostrar como funcionan los componentes,
+se recomienda eliminar este modulo una vez concluido o empezado el desarrollo.
+A continuación se listan los pasos:
+
 - [ ] Eliminar la carpeta test que se encuentra en la ruta de app/test
 - [ ] Eliminar la clase TestRepository que se encuentra en la ruta/app/repository
 - [ ] Eliminar ls carpeta test que se encuentra dentro ui/modulos
