@@ -19,7 +19,12 @@ Version minima de php 5.4
 
 Usuario para entrar admin contrasenia password
 
-<a href="http://www.tuzoftware.com/pulque-documentacion">Documentaci&oacute;n</a>
+# Documentaci&oacute;n
+
+El link
+<a href="http://www.tuzoftware.com/pulque-documentacion">Documentaci&oacute;n</a>,
+o visitar las siguientes urls ,http://www.tuzoftware.com/pulque-documentacion, 
+http://www.tuzoftware.com/#pulque.
 
 # Pasos para Eliminar los test
 
