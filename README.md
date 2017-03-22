@@ -11,9 +11,15 @@ Ejecutar el script pulquedb.sql como root en mysql
 
 Copiar la carpeta al www o a htdocs de wamp o xammp
 
+Dar permisos 777 al archivo folio.log 
+
+Dar permisos 777 a la carpeta tmp
+
 Version minima de php 5.4
 
 Usuario para entrar admin contrasenia password
+
+<a href="http://www.tuzoftware.com/pulque-documentacion">Documentaci&oacute;n</a>
 
 # Pasos para Eliminar los test
 
@@ -27,4 +33,4 @@ A continuación se listan los pasos :
 - [ ] Eliminar las rutas de test que se encuentran en el index.php
 - [ ] Método redireccionar Rol en AutenticacionController
 
-Version 1.43
+Version 1.44
