@@ -71,7 +71,7 @@ class BaseRepository
         $resultados=$this->db->exec($this->sql,$this->filtros);
         $this->filtros=array();
         if(empty($resultados)){
-            return null;
+            return false;
         }
         return $resultados;
     }
@@ -82,7 +82,7 @@ class BaseRepository
         $resultados=$this->db->exec($this->sql,$this->filtros);
         $this->filtros=array();
         if(empty($resultados)){
-            return null;
+            return false;
         }
         return $resultados;
     }
@@ -91,7 +91,7 @@ class BaseRepository
         $resultados=$this->db->exec($this->sql,$this->filtros);
         $this->filtros=array();
         if(empty($resultados)){
-            return null;
+            return false;
         }
         return $resultados[0];
     }
@@ -100,7 +100,7 @@ class BaseRepository
         $resultados=$this->db->exec($this->sql,$this->filtros);
         $this->filtros=array();
         if(empty($resultados)){
-            return null;
+            return false;
         }
         return current($resultados[0]);
     }
