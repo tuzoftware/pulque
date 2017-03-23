@@ -33,6 +33,12 @@ class BaseRepository
         return $objeto;
     }
 
+    public function obtenerCampoValor($nombre_tabla,$campo,$valor,$key){
+        $objeto=new DB\SQL\Mapper($this->db,$nombre_tabla);
+        $objeto->load(array($campo.'=?',$valor));
+        return $objeto[$key];
+    }
+
     public function eliminarInstanciaIdValor($nombre_tabla,$id,$valor){
             $objeto=new DB\SQL\Mapper($this->db,$nombre_tabla);
             $objeto->load(array($id.'=?',$valor));
