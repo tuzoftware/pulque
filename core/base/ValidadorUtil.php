@@ -21,7 +21,7 @@ class ValidadorUtil{
         $this->validarRequerido($campo,$requerido);
         $this->validador->rule('lengthBetween',$campo, $longitudMinima,$longitudMaxima);
         if(!empty($expresionRegular)){
-            $this->validador->rule('regex',$expresionRegular);
+            $this->validador->rule('regex',$campo,$expresionRegular);
         }
     }
 
@@ -30,7 +30,7 @@ class ValidadorUtil{
         $this->validador->rule('lengthBetween',$campo, $longitudMinima,$longitudMaxima);
         $this->validador->rule('email',$campo);
         if(!empty($expresionRegular)){
-            $this->validador->rule('regex',$expresionRegular);
+            $this->validador->rule('regex',$campo,$expresionRegular);
         }
     }
 
