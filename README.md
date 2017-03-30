@@ -38,4 +38,4 @@ A continuación se listan los pasos :
 - [ ] Eliminar las rutas de test que se encuentran en el index.php
 - [ ] Método redireccionar Rol en AutenticacionController
 
-Version 1.50
+Version 1.51
