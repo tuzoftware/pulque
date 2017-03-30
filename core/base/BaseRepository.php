@@ -18,9 +18,20 @@ class BaseRepository
         $this->filtros=array();
     }
 
-
     public function obtenerInstanciaBD(){
         return $this->db;
+    }
+
+    public function beginTransacction(){
+        $this->db->begin();
+    }
+
+    public function commitTransaction(){
+        return $this->db->commit();
+    }
+
+    public function rollBackTransaction(){
+        $this->db->rollback();
     }
 
     public function obtenerInstancia($nombre_tabla){
