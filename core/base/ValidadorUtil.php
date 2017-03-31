@@ -25,6 +25,12 @@ class ValidadorUtil{
         }
     }
 
+    public function validarAlfa($campo,$requerido,$longitudMinima,$longitudMaxima){
+        $this->validarRequerido($campo,$requerido);
+        $this->validador->rule('lengthBetween',$campo, $longitudMinima,$longitudMaxima);
+        $this->validador->rule('alpha', $campo);
+    }
+
     public function validarCorreoElectronico($campo,$requerido,$longitudMinima,$longitudMaxima,$expresionRegular=''){
         $this->validarRequerido($campo,$requerido);
         $this->validador->rule('lengthBetween',$campo, $longitudMinima,$longitudMaxima);
