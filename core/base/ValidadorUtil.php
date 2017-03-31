@@ -14,9 +14,40 @@ class ValidadorUtil{
     public function __construct($arreglo){
         $this->arreglo=$arreglo;
         $this->validador=new Valitron\Validator($arreglo);
+        Valitron\Validator::addRule('antes', function($field, $value,$params) {
+            //Las fechas deben ya venir en formato string
+            $fechaUno=DateTime::createFromFormat($params[1], $value);
+            $fechaDos=DateTime::createFromFormat($params[1], $params[0]);
+            if(!$fechaUno || !$fechaDos){
+                return false;
+            }
+            if($fechaUno<$fechaDos){
+                return true;
+            }
+            return false;
+        }, "debe ser una fecha antes de '%s'");
+        Valitron\Validator::addRule('despues', function($field, $value,$params) {
+            //Las fechas deben ya venir en formato string
+            $fechaUno=DateTime::createFromFormat($params[1], $value);
+            $fechaDos=DateTime::createFromFormat($params[1], $params[0]);
+            if(!$fechaUno || !$fechaDos){
+                return false;
+            }
+            if($fechaUno>$fechaDos){
+                return true;
+            }
+            return false;
+        }, "debe ser una fecha posterior a '%s'");
     }
 
 
+    public function validarFecha($campo,$requerido,$fechaMinima,$fechaMaxima,$formato='Y-m-d'){
+        $this->validarRequerido($campo,$requerido);
+        $this->validador->rule('date',$campo);
+        $this->validador->rule('dateFormat', $campo, $formato);
+        $this->validador->rule('antes',$campo,$fechaMaxima,$formato);
+        $this->validador->rule('despues',$campo,$fechaMinima,$formato);
+    }
     public function validarTexto($campo,$requerido,$longitudMinima,$longitudMaxima,$expresionRegular=''){
         $this->validarRequerido($campo,$requerido);
         $this->validador->rule('lengthBetween',$campo, $longitudMinima,$longitudMaxima);
