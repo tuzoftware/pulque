@@ -86,7 +86,7 @@ class Validator
      * @param  string                    $langDir
      * @throws \InvalidArgumentException
      */
-    public function __construct($data, $fields = array(), $lang = null, $langDir = null)
+    public function __construct($data = array(), $fields = array(), $lang = null, $langDir = null)
     {
         // Allows filtering of used input fields against optional second array of field names allowed
         // This is useful for limiting raw $_POST or $_GET data to only known fields
@@ -233,10 +233,16 @@ class Validator
      *
      * @param  string $field
      * @param  mixed  $value
+     * @param  array  $params
      * @return bool
      */
-    protected function validateInteger($field, $value)
+    protected function validateInteger($field, $value, $params)
     {
+        if (isset($params[0]) && (bool) $params[0]){
+            //strict mode
+            return preg_match('/^-?([0-9])+$/i', $value);
+        }
+
         return filter_var($value, \FILTER_VALIDATE_INT) !== false;
     }
 
@@ -653,7 +659,7 @@ class Validator
      */
     protected function validateBoolean($field, $value)
     {
-        return (is_bool($value)) ? true : false;
+        return is_bool($value);
     }
 
     /**
@@ -725,7 +731,7 @@ class Validator
             } else {
                 $cardRegex = array(
                     'visa'          => '#^4[0-9]{12}(?:[0-9]{3})?$#',
-                    'mastercard'    => '#^5[1-5][0-9]{14}$#',
+                    'mastercard'    => '#^(5[1-5]|2[2-7])[0-9]{14}$#',
                     'amex'          => '#^3[47][0-9]{13}$#',
                     'dinersclub'    => '#^3(?:0[0-5]|[68][0-9])[0-9]{11}$#',
                     'discover'      => '#^6(?:011|5[0-9]{2})[0-9]{12}$#',
@@ -1084,7 +1090,7 @@ class Validator
      * Convenience method to add a single validation rule
      *
      * @param  string|callback           $rule
-     * @param  array                     $fields
+     * @param  array|string              $fields
      * @return $this
      * @throws \InvalidArgumentException
      */
@@ -1199,13 +1205,56 @@ class Validator
      *
      * @param  array $data
      * @param  array $fields
-     * @return Valitron
+     * @return \Valitron\Validator
      */
     public function withData($data, $fields = array())
     {
         $clone = clone $this;
-        $clone->reset();
         $clone->_fields = !empty($fields) ? array_intersect_key($data, array_flip($fields)) : $data;
+        $clone->_errors = array();
         return $clone;
+    }
+
+    /**
+     * Convenience method to add validation rule(s) by field
+     *
+     * @param string field_name
+     * @param array $rules
+     */
+    public function mapFieldRules($field_name, $rules){
+        $me = $this;
+
+        array_map(function($rule) use($field_name, $me){
+
+            //rule must be an array
+            $rule = (array)$rule;
+
+            //First element is the name of the rule
+            $rule_name = array_shift($rule);
+
+            //find a custom message, if any
+            $message = null;
+            if (isset($rule['message'])){
+                $message = $rule['message'];
+                unset($rule['message']);
+            }
+            //Add the field and additional parameters to the rule
+            $added = call_user_func_array(array($me, 'rule'), array_merge(array($rule_name, $field_name), $rule));
+            if (! empty($message)){
+                $added->message($message);
+            }
+        }, (array) $rules);
+    }
+
+    /**
+     * Convenience method to add validation rule(s) for multiple fields
+     *
+     * @param array $rules
+     */
+    public function mapFieldsRules($rules){
+        $me = $this;
+        array_map(function($field_name) use($rules, $me){
+            $me->mapFieldRules($field_name, $rules[$field_name]);
+        }, array_keys($rules));
     }
 }
