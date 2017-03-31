@@ -18,4 +18,15 @@ class FechaUtil{
         return $fecha->format($formatoDestino);
     }
 
+    /**
+     * Retorna un objeto DateTime a partir de un formato ya creado
+     * @param $fecha
+     * @param string $formatoOrigen
+     * @return bool|DateTime
+     */
+    public static function crearFechaFormato($fecha, $formatoOrigen = "d/m/Y"){
+        $fecha = DateTime::createFromFormat($formatoOrigen, $fecha);
+        return $fecha;
+    }
+
 }
