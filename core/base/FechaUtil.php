@@ -29,4 +29,17 @@ class FechaUtil{
         return $fecha;
     }
 
+    /**
+     * Agrega un intervalo Dias, Anios a una fecha con formato String
+     * @param $fecha
+     * @param string $intervalo
+     * @param string $formato
+     * @return string
+     */
+    public static function agregarIntervaloFechaStr($fecha, $intervalo='P1D', $formato = 'Y-m-d'){
+        $fecha = DateTime::createFromFormat($formato, $fecha);
+        $fecha->add(new DateInterval($intervalo));
+        return $fecha->format($formato);
+    }
+
 }
