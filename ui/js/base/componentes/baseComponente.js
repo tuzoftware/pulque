@@ -61,7 +61,6 @@ var baseComponente = (function() {
                             var selectorI="[data-error='"+index+"'] i";
                             var elemento="";
                             var elementoI="";
-                            console.log(options.elemento);
                             if(options.elemento!=undefined){
                                 elemento=$(options.elemento).find(selector);
                                 elementoI=$(options.elemento).find(selectorI);
@@ -69,7 +68,6 @@ var baseComponente = (function() {
                                 elemento=selector;
                                 elementoI=selectorI;
                             }
-                            console.log(elementoI);
                             if(mostrarPrimerError){
                                 var texto="   "+value[0];
                                 $(elementoI).html(texto);
