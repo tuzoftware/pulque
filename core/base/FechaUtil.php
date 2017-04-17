@@ -19,6 +19,18 @@ class FechaUtil{
     }
 
     /**
+     * Convierte un campo de un arreglo por referencia
+     * @param $arreglo
+     * @param $keyFecha
+     * @param string $formatoOrigen
+     * @param string $formatoDestino
+     */
+    public static function convertirFechaReferencia(&$arreglo, $keyFecha, $formatoOrigen = "d/m/Y", $formatoDestino = 'Y-m-d'){
+        $fecha = DateTime::createFromFormat($formatoOrigen, $arreglo[$keyFecha]);
+        $arreglo[$keyFecha]=$fecha->format($formatoDestino);
+    }
+
+    /**
      * Retorna un objeto DateTime a partir de un formato ya creado
      * @param $fecha
      * @param string $formatoOrigen
