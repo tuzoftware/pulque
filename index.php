@@ -84,6 +84,8 @@ $f3->set('twig',$twig);
 */
 $whoops = new \Whoops\Run;
 $whoops->pushHandler(function ($exception) {
+    //error_reporting(E_ALL);
+    //ini_set("display_errors", 1);
     $datetime = new DateTime();
     $folio=' FOLIO '.$datetime->format('d_m_Y_h_i_s');
     $logger = new Log('folio.log');
