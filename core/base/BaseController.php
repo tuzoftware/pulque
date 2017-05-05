@@ -18,6 +18,10 @@ class BaseController
          exit;
      }
 
+      public function parametrosURL($parametro){
+        return F3::GET("PARAMS.".$parametro);
+      }
+
       public function post($parametro){
         return F3::GET("POST.".$parametro);
       }
