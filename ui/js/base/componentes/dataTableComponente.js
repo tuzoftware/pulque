@@ -85,7 +85,7 @@ var dataTableComponente = (function (selector, url, columnas, selectorFormulario
     function detalle(selectorPlantilla) {
 
         $(selector+' tbody').on('click', '.odd,.even', function (e) {
-            if($(e.target).is('button')){
+            if($(e.target).is('button')  || $(e.target).is('a')){
                 return;
             }
             var tr = $(this).closest('tr');

@@ -26,8 +26,10 @@ class FechaUtil{
      * @param string $formatoDestino
      */
     public static function convertirFechaReferencia(&$arreglo, $keyFecha, $formatoOrigen = "d/m/Y", $formatoDestino = 'Y-m-d'){
-        $fecha = DateTime::createFromFormat($formatoOrigen, $arreglo[$keyFecha]);
-        $arreglo[$keyFecha]=$fecha->format($formatoDestino);
+        if(!empty($arreglo) && array_key_exists($keyFecha,$arreglo)){
+            $fecha = DateTime::createFromFormat($formatoOrigen, $arreglo[$keyFecha]);
+            $arreglo[$keyFecha]=$fecha->format($formatoDestino);
+        }
     }
 
     /**
