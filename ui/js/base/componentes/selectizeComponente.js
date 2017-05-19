@@ -31,7 +31,7 @@ var selectizeComponente = (function(selector) {
         return instancia;
     }
 
-    function encadenar(url,nombre_id,selectComponenteHijo) {
+    function encadenar(url,nombre_id,selectComponenteHijo,valorHijoPredefinido) {
         instancia.on('change', function() {
             var datos = {};
             datos[nombre_id]=instancia.getValue();
@@ -47,6 +47,9 @@ var selectizeComponente = (function(selector) {
                 hijo.load(function(callback) {
                     callback(data);
                 });
+                if(valorHijoPredefinido!=undefined){
+                    hijo.setValue(valorHijoPredefinido);
+                }
             });
         });
     }
