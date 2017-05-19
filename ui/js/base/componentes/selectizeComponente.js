@@ -47,7 +47,7 @@ var selectizeComponente = (function(selector) {
                 hijo.load(function(callback) {
                     callback(data);
                 });
-                if(valorHijoPredefinido!=undefined){
+                if(valorHijoPredefinido!==undefined){
                     hijo.setValue(valorHijoPredefinido);
                 }
             });
