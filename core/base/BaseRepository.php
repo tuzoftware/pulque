@@ -88,7 +88,6 @@ class BaseRepository
             $objeto->load(array($nombreCampo.'=? AND '.$nombreId.'!=?',$arreglo[$nombreCampo],$arreglo[$nombreId]));
         }
         if(!empty($objeto[$nombreId])){
-            echo $objeto[$nombreId];
             $existe=true;
         }
         return $existe;
