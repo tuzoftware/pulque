@@ -60,11 +60,13 @@ class BaseRepository
         $tabla=new DB\SQL\Mapper($this->db,$nombreTabla);
         $filtro=array("$nombreIdForanea=? AND $nombreCampo=?",$valorForanea,$valor);
         $tabla->load($filtro);
+        $existe=false;
         if(empty($tabla[$nombreIdForanea])){
-            return false;
+            $existe=false;
         }else{
-            return true;
+            $existe=true;
         }
+        return $existe;
     }
 
     public function existeId($nombre_tabla,$id,$valor){
@@ -72,6 +74,20 @@ class BaseRepository
         $objeto->load(array($id.'=?',$valor));
         $existe=false;
         if(!empty($objeto[$id])){
+            $existe=true;
+        }
+        return $existe;
+    }
+
+    public function existeGuardarEditarNombreCampo($nombre_tabla,$arreglo,$nombreCampo,$nombreId){
+        $objeto=new DB\SQL\Mapper($this->db,$nombre_tabla);
+        $existe=false;
+        if(empty($nombreId)){
+            $objeto->load(array($nombreCampo.'=?',$arreglo[$nombreCampo]));
+        }else{
+            $objeto->load(array($nombreCampo.'=? AND '.$nombreId.'!=?',$arreglo[$nombreCampo],$arreglo[$nombreId]));
+        }
+        if(!empty($objeto[$nombreId])){
             $existe=true;
         }
         return $existe;
