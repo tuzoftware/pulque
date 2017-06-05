@@ -82,12 +82,13 @@ class BaseRepository
     public function existeGuardarEditarNombreCampo($nombre_tabla,$arreglo,$nombreCampo,$nombreId){
         $objeto=new DB\SQL\Mapper($this->db,$nombre_tabla);
         $existe=false;
-        if(empty($arreglo["nombreId"])){
+        if(empty($arreglo[$nombreId])){
             $objeto->load(array($nombreCampo.'=?',$arreglo[$nombreCampo]));
         }else{
             $objeto->load(array($nombreCampo.'=? AND '.$nombreId.'!=?',$arreglo[$nombreCampo],$arreglo[$nombreId]));
         }
         if(!empty($objeto[$nombreId])){
+            echo $objeto[$nombreId];
             $existe=true;
         }
         return $existe;
