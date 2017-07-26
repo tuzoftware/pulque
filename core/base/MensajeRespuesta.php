@@ -83,7 +83,18 @@ class MensajeRespuesta{
    }else{
        exit();
    }
-  }  
-  
+  }
+
+    static function datosJSONPlanos($datosAdicionales,$tipoMensaje="CORRECTO",$estatus=200){
+        $data = array();
+        $data['estatus'] = $estatus;
+        $data['mensaje']="";
+        $data['tipoRespuesta']='MENSAJE';
+        $data['tipoMensaje']=$tipoMensaje;
+        $data["datosAdicionales"]=$datosAdicionales;
+        echo json_encode($data);
+        header('Content-type: application/json');
+        exit();
+    }
 
 }
